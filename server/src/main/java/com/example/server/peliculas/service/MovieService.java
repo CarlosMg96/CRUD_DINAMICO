@@ -5,6 +5,7 @@ import com.example.server.peliculas.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,28 @@ public class MovieService {
         return movieRepository.findById(id);
     }
 
+    //Uso de jpa querys
+    public List<MovieModel> searchForNombre(String nombre) {
+        return movieRepository.findByNombreContainingIgnoreCase(nombre);
+    }
+
+    public List<MovieModel> searchForDirector(String director) {
+        return movieRepository.findByDirectorContainingIgnoreCase(director);
+    }
+
+    public List<MovieModel> buscarPorFechas(Date fechaInicio, Date fechaFin) {
+        return movieRepository.findByFechaPublicacionBetween(fechaInicio, fechaFin);
+    }
+
+    public List<MovieModel> buscarPorFechaPublicacionDesc(Date fechaPublicacion) {
+        return movieRepository.findByFechaPublicacionBeforeOrderByFechaPublicacionDesc(fechaPublicacion);
+    }
+
+    public List<MovieModel> buscarPorGeneroId(Integer generoId) {
+        return movieRepository.searchByGeneroId(generoId);
+    }
+
+
     public MovieModel createMovie(MovieModel movie) {
         return movieRepository.save(movie);
     }
@@ -35,6 +58,7 @@ public class MovieService {
         movie.setDuracion(movieDetails.getDuracion());
         movie.setDescripcion(movieDetails.getDescripcion());
         movie.setGeneroId(movieDetails.getGeneroId());
+        movie.setFechaPublicacion(movieDetails.getFechaPublicacion());
         return movieRepository.save(movie);
     }
 

@@ -2,6 +2,8 @@ package com.example.server.peliculas.model;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "pelicula")
 public class MovieModel {
@@ -14,15 +16,19 @@ public class MovieModel {
     private String descripcion;
     private int generoId;
 
-    public MovieModel(){}
+    private Date fechaPublicacion;
 
-    public MovieModel(int id, String nombre, String director, String duracion, String descripcion, int generoId) {
+    public MovieModel() {
+    }
+
+    public MovieModel(int id, String nombre, String director, String duracion, String descripcion, int generoId, Date fechaPublicacion) {
         this.id = id;
         this.nombre = nombre;
         this.director = director;
         this.duracion = duracion;
         this.descripcion = descripcion;
         this.generoId = generoId;
+        this.fechaPublicacion = fechaPublicacion;
     }
 
     public int getId() {
@@ -71,5 +77,13 @@ public class MovieModel {
 
     public void setGeneroId(int generoId) {
         this.generoId = generoId;
+    }
+
+    public Date getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
+    public void setFechaPublicacion(Date fechaPublicacion) {
+        this.fechaPublicacion = fechaPublicacion;
     }
 }

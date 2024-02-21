@@ -31,7 +31,7 @@ public class GenderService {
     }
 
     private void loadDefaultGenders() {
-        List<String> defaultGenres = Arrays.asList("Acción", "Comedia", "Drama");
+        List<String> defaultGenres = Arrays.asList("Acción", "Comedia", "Drama", "Suspenso", "Historia", "Vida", "Romance");
 
         for (String genre : defaultGenres) {
             GenderModel gender = new GenderModel(genre);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let API_URL = 'http://localhost:8080/api/movies';
+let API_URL = 'http://localhost:8081/api/movies';
 
 const obtenerPeliculas = async () => {
    try {

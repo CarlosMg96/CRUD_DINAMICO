@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let API_URL = 'http://localhost:8080/api/genders';
+let API_URL = 'http://localhost:8081/api/genders';
 
 const obtenerGeneros = async () => {
    try {
