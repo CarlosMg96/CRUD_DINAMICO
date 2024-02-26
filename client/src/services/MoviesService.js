@@ -64,9 +64,38 @@ const eliminarPelicula = async (movie_id) => {
    }
 };
 
+const obtenerPeliculasPorRangoFecha = async(start, end) =>{
+   const NEW_URL = `${API_URL}/searchForFechas`;
+   const params = {
+      fechaInicio: start,
+      fechaFin: end
+   }
+   try {
+      const response = await axios.get(NEW_URL, { params });
+      return response;
+   } catch (error) {
+      throw error;
+   }
+}
+
+const obtenerPeliculasOdernDesc = async(start) =>{
+   const NEW_URL = `${API_URL}/searchForFechaPublicacionDesc`;
+   const params = {
+      fechaPublicacion: start
+   }
+   try {
+      const response = await axios.get(NEW_URL, { params });
+      return response;
+   } catch (error) {
+      throw error;
+   }
+}
+
 export default {
    obtenerPeliculas,
    editarPelicula,
    guardarPelicula,
    eliminarPelicula,
+   obtenerPeliculasOdernDesc,
+   obtenerPeliculasPorRangoFecha,
 };
