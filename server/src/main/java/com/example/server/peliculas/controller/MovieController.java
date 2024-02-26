@@ -41,6 +41,8 @@ public class MovieController {
     public List<MovieModel> buscarPorFechas(
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") String fechaInicio,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") String fechaFin) {
+        System.out.println("Fecha de inicio: " + fechaInicio);
+        System.out.println("Fecha de fin: " + fechaFin);
         Date fechaInicioConvertida = Date.valueOf(fechaInicio);
         Date fechaFinConvertida = Date.valueOf(fechaFin);
         return movieService.buscarPorFechas(fechaInicioConvertida, fechaFinConvertida);
